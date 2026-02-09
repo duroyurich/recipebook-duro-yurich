@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1> Test </h1>
+    <ul>
+        {% for recipes in recipes %}
+        <li>
+            <a href="{{recipes.link}}"> {{recipes.name}} </a>
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
