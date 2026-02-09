@@ -4,7 +4,9 @@
     <h1> {{name}} </h1>
     <ul>
         {% for ingredients in ingredients %}
-        <li> {{ingredients.quantity}} of {{ingredients.name}} </li>
+        <li> 
+            {{ingredients.quantity}} of {{ingredients.name}} 
+        </li>
         {% endfor %}
     </ul>
 {% endblock %}

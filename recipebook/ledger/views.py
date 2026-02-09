@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+
 
 def recipes_list(request):
     ctx = {
@@ -65,8 +65,9 @@ def recipes_list(request):
                 "link": "/recipe/2"
             }
         ]
-    }    
+    }
     return render(request, 'recipe_list.html', ctx)
+
 
 def recipe_1(request):
     ctx = {
