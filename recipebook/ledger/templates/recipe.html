@@ -5,9 +5,9 @@
         {{name}} 
     </h2>
     <ul>
-        {% for ingredients in ingredients %}
+        {% for ingredient in recipe.ingredients.all %}
         <li> 
-            {{ingredients.quantity}} of {{ingredients.name}} 
+            {{ingredient.quantity}} of {{ingredient.ingredient.name}}
         </li>
         {% endfor %}
     </ul>
