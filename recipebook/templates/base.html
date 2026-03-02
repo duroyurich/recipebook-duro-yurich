@@ -10,6 +10,7 @@
             {% else %}
                 <a href="{% url 'login' %}">Login</a>
             {% endif %}
+            <h2> {% block page_heading %} {% endblock %}</h2>
         </header>
         {% block content %}
         {% endblock %}

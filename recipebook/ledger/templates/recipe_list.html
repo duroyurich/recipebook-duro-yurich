@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block page_heading %} Recipe List {% endblock %}
+
 {% block content %}
     <ul>
         {% for recipe in recipes.all %}
