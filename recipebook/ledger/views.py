@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import Recipe
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView, UpdateView
-from .forms import RecipeForm
+from django.urls import reverse_lazy
+from .forms import RecipeForm, ImageForm
 
 
 def recipes_list(request):
@@ -22,7 +22,7 @@ def recipe_add(request):
     form = RecipeForm()
     if request.method == 'POST':
         form = RecipeForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             recipe = form.save()
             return redirect('ledger:recipe-detail', id=recipe.id)
     ctx = {"recipe": Recipe.objects.all(), "form": form}
@@ -30,5 +30,15 @@ def recipe_add(request):
 
 
 @login_required
-def recipe_add_image(request):
-    pass
+def recipe_add_image(request, id):
+    recipe = Recipe.objects.get(id=id)
+    form = ImageForm()
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.recipe = recipe
+            image.save()
+            return redirect('ledger:recipe-detail', id=recipe.id)
+    ctx = {"recipe": recipe, "form": form}
+    return render(request, 'recipe_add_image.html', ctx)

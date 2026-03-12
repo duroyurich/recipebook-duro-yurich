@@ -17,5 +17,6 @@
             <img src="{{ img.recipe_image.url }}" alt="{{ img.description }}">
             {% endif %}
         {% endfor %}
+        <p><a href="{% url 'ledger:recipe-add-image' recipe.pk %}"> Add Image </a></p>
     </ul>
 {% endblock %}
